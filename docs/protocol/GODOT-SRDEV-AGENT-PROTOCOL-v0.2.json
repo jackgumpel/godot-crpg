@@ -1,0 +1,130 @@
+{
+  "protocol": "GODOT-SRDEV-AGENT-PROTOCOL",
+  "version": "0.2",
+  "status": "locked",
+  "role": "strict_execution_contract",
+  "condensed_summary": "Turns v0.1 into a stricter execution protocol with fixed phases, required tags, evidence levels, and grading hooks. Use this version for live execution; keep v0.1 as the glossary and philosophy layer behind it.",
+  "required_core_keywords": [
+    "SPEC_LOCK",
+    "CONTEXT_LOCK",
+    "IMPLEMENT",
+    "VERIFY",
+    "BLOCKER",
+    "MINIMAL_DIFF",
+    "SCHEMA_FIRST",
+    "PROVENANCE"
+  ],
+  "optional_keywords": [
+    "LITERAL",
+    "CAUTION",
+    "REFACTOR_SAFE",
+    "REFACTOR_RISK",
+    "NO_FLUFF"
+  ],
+  "fixed_phase_order": [
+    "intake",
+    "schema",
+    "plan",
+    "implement",
+    "verify",
+    "close"
+  ],
+  "allowed_modes": [
+    "schema_first",
+    "implement",
+    "verify",
+    "review",
+    "explore"
+  ],
+  "allowed_signal_states": [
+    "green",
+    "yellow",
+    "red",
+    "black"
+  ],
+  "confidence_bands": {
+    "high": "0.85-1.00",
+    "medium": "0.70-0.84",
+    "low": "0.50-0.69",
+    "insufficient": "<0.50"
+  },
+  "evidence_levels": {
+    "runtime_verified": 4,
+    "repo_observed": 3,
+    "doc_verified": 2,
+    "inferred": 1,
+    "speculative": 0
+  },
+  "required_tags": [
+    "session",
+    "role",
+    "engine",
+    "mode",
+    "signal",
+    "objective",
+    "scope",
+    "constraints",
+    "context_lock",
+    "schema",
+    "validation",
+    "done_criteria",
+    "output_format"
+  ],
+  "conditional_tags": [
+    "assumptions",
+    "evidence",
+    "plan",
+    "risk",
+    "decision",
+    "fallback",
+    "provenance",
+    "override",
+    "notes"
+  ],
+  "hard_rules": [
+    "If signal is black, the path is disallowed and must not be executed.",
+    "If signal is red, execution requires an override or fallback path.",
+    "If mode is implement, schema must already exist or be created first.",
+    "If a critical claim is inferred or speculative, the signal must be yellow or red.",
+    "If done_criteria are absent, task status is provisional only.",
+    "If blocker conditions are met, stop and emit BLOCKER rather than guessing.",
+    "If output_format is json_only, all responses must be valid JSON objects."
+  ],
+  "blocker_conditions": [
+    "missing_required_context",
+    "conflicting_constraints",
+    "unsafe_or_disallowed_action",
+    "schema_conflict",
+    "unverifiable_critical_claim"
+  ],
+  "minimal_machine_contract": {
+    "required_response_keys": [
+      "protocol",
+      "version",
+      "phase",
+      "signal",
+      "objective",
+      "decision",
+      "evidence",
+      "risks",
+      "validation",
+      "status"
+    ],
+    "status_values": [
+      "provisional",
+      "in_progress",
+      "validated",
+      "blocked",
+      "complete"
+    ]
+  },
+  "grading_hooks": [
+    "schema_validity_rate",
+    "context_drift_events_per_task",
+    "verification_coverage",
+    "grounding_ratio",
+    "self_correction_latency",
+    "blocker_accuracy"
+  ],
+  "minimal_xml_template": "<session version=\"0.2\"><role>sr_game_dev</role><engine>godot 4.x</engine><mode>implement</mode><signal state=\"yellow\" reason=\"needs verification\"/><objective>exact task here</objective><scope>systems and files here</scope><constraints>repo_constrained; json_only</constraints><context_lock>approved context only</context_lock><schema>required input and output contract</schema><validation type=\"consistency\" required=\"true\">checks here</validation><done_criteria>completion conditions here</done_criteria><output_format>json_only</output_format></session>"
+}

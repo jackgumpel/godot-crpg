@@ -1,0 +1,25 @@
+{
+  "protocol_family": "GODOT-SRDEV-AGENT-PROTOCOL",
+  "status": "locked",
+  "current_stable": "0.2",
+  "versions": [
+    {
+      "version": "0.1",
+      "status": "locked",
+      "role": "foundational_glossary_and_control_layer",
+      "file": "docs/protocol/GODOT-SRDEV-AGENT-PROTOCOL-v0.1.json",
+      "condensed_summary": "Defines the shared vocabulary, XML tags, color states, and deterministic control keywords for senior Godot agents."
+    },
+    {
+      "version": "0.2",
+      "status": "locked",
+      "role": "strict_execution_contract",
+      "file": "docs/protocol/GODOT-SRDEV-AGENT-PROTOCOL-v0.2.json",
+      "condensed_summary": "Turns v0.1 into a stricter execution protocol with fixed phases, required tags, evidence levels, and grading hooks."
+    }
+  ],
+  "usage": {
+    "v0.1": "Reference for terminology and intent.",
+    "v0.2": "Use for live execution and future protocol patches."
+  }
+}

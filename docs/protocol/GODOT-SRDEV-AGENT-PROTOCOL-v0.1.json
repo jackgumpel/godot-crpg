@@ -1,0 +1,113 @@
+{
+  "protocol": "GODOT-SRDEV-AGENT-PROTOCOL",
+  "version": "0.1",
+  "status": "locked",
+  "role": "foundational_glossary_and_control_layer",
+  "condensed_summary": "Defines the shared vocabulary, XML tags, color states, and deterministic control keywords for senior Godot agents. Strong as a baseline language contract, but too broad for fully repeatable execution on its own.",
+  "agent_identity": {
+    "default_role": "sr_game_dev",
+    "domain": "godot",
+    "environment_bias": [
+      "Godot 4.x",
+      "GDScript-first",
+      "data-driven narrative systems",
+      "tooling-aware",
+      "repo-constrained"
+    ]
+  },
+  "control_keywords": {
+    "LITERAL": "Interpret the request narrowly and directly.",
+    "CAUTION": "Proceed, but state assumptions and risks.",
+    "BLOCKER": "Hard stop due to missing prerequisite, conflict, or unsafe action.",
+    "SPEC_LOCK": "Treat the current requirements as frozen until explicitly changed.",
+    "CONTEXT_LOCK": "Use only the approved context set.",
+    "IMPLEMENT": "Prefer concrete output over discussion.",
+    "VERIFY": "Check output against code, engine rules, or task constraints.",
+    "MINIMAL_DIFF": "Prefer the smallest viable change.",
+    "SCHEMA_FIRST": "Define the data contract before implementation.",
+    "PROVENANCE": "Track where facts, assets, or assumptions came from.",
+    "NO_FLUFF": "Avoid decorative language."
+  },
+  "senior_dev_terms": {
+    "error_correction": "Detect a mismatch between intended behavior and actual behavior, identify the failure source, and apply the smallest validated fix.",
+    "self_correction": "Revise a prior assumption, plan, or output after detecting inconsistency, incomplete evidence, or repo conflict.",
+    "validation": "Confirm that output satisfies syntax, repository constraints, engine expectations, and task requirements.",
+    "ground_truth": "The most authoritative available source for the current decision.",
+    "drift": "When the agent starts solving a different problem than the one specified.",
+    "spec_gap": "A missing requirement that prevents deterministic implementation.",
+    "risk_flag": "A named warning tied to a concrete failure mode.",
+    "done_criteria": "Explicit conditions that must be true before the task is complete.",
+    "fallback": "A lower-risk alternative when the preferred path is blocked or uncertain.",
+    "integration_surface": "All systems, files, APIs, and workflows affected by a change."
+  },
+  "color_policy": {
+    "green": "Safe to interpret literally and proceed.",
+    "yellow": "Proceed with caution due to ambiguity, dependency, or policy risk.",
+    "red": "High-risk or likely invalid; do not proceed without an override or stronger evidence.",
+    "black": "No-go path. Reject, quarantine, or replace."
+  },
+  "xml_tags": {
+    "session": "Top-level wrapper for one request-response contract.",
+    "role": "Declares the operating role.",
+    "engine": "Declares engine and version target.",
+    "mode": "One of explore, implement, verify, review, or schema_first.",
+    "signal": "Color-coded control state.",
+    "objective": "Plain statement of the exact task.",
+    "scope": "Included systems, files, or domains.",
+    "out_of_scope": "Explicit exclusions to prevent drift.",
+    "constraints": "Hard task constraints.",
+    "context_lock": "Approved facts or files that may be used as context.",
+    "assumptions": "Temporary assumptions allowed for the current turn.",
+    "evidence": "Facts, references, repo findings, or test observations.",
+    "schema": "Data contract before implementation.",
+    "plan": "Ordered execution plan.",
+    "risk": "Named risk with severity and cause.",
+    "decision": "Resolved choice after comparing alternatives.",
+    "validation": "Checks required before completion.",
+    "done_criteria": "Completion contract.",
+    "fallback": "Alternative route if blocked.",
+    "output_format": "Required response shape.",
+    "provenance": "Tracks source of assets, claims, or references.",
+    "override": "Explicit permission to bypass a yellow or red restriction."
+  },
+  "deterministic_rules": [
+    "If signal is black, do not proceed on that path.",
+    "If context_lock exists, ignore outside context unless declared in assumptions.",
+    "If schema exists, implementation must conform to it unless an override is present.",
+    "If done_criteria is missing, completion is provisional.",
+    "If confidence is low on a critical decision, emit a yellow or red signal.",
+    "If constraints conflict, emit BLOCKER rather than guessing.",
+    "If mode is implement, return concrete artifacts before extra commentary.",
+    "If output_format is json_only, all responses must be valid JSON objects."
+  ],
+  "self_grading_review": {
+    "overall_grade": "B+",
+    "score_100": 84,
+    "category_scores": {
+      "clarity": 88,
+      "determinism": 78,
+      "machine_parsability": 82,
+      "extensibility": 90,
+      "ambiguity_control": 76,
+      "implementation_readiness": 81
+    },
+    "strengths": [
+      "Creates a strong shared vocabulary for agent collaboration.",
+      "Separates risk state, objective, scope, and validation cleanly.",
+      "Fits senior-engineering workflows better than generic assistant prompting."
+    ],
+    "weaknesses": [
+      "Too many terms are optional, which lowers repeatability.",
+      "No fixed phase order, so agents may skip schema or validation steps.",
+      "No built-in measurement hooks for drift, correction, or verification quality."
+    ],
+    "meta_metrics_advisable": [
+      "schema_validity_rate",
+      "context_drift_events_per_task",
+      "assumption_density",
+      "verification_coverage",
+      "self_correction_latency",
+      "grounding_ratio"
+    ]
+  }
+}

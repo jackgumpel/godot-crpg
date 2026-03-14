@@ -1,0 +1,151 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0823529, 0.0705882, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = -32.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Root" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Header" type="VBoxContainer" parent="MarginContainer/Root"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ProjectTitle" type="Label" parent="MarginContainer/Root/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.839216, 0.654902, 1)
+theme_override_font_sizes/font_size = 34
+text = "Forgotten-Roads Prototype"
+
+[node name="ProjectSubtitle" type="Label" parent="MarginContainer/Root/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65098, 0.615686, 0.541176, 1)
+theme_override_font_sizes/font_size = 16
+text = "A Godot 4 vertical slice for text encounters, skill gates, flags, and journal updates."
+
+[node name="Columns" type="HBoxContainer" parent="MarginContainer/Root"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="NarrativePanel" type="PanelContainer" parent="MarginContainer/Root/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="MarginContainer/Root/Columns/NarrativePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Root/Columns/NarrativePanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="SceneTitle" type="Label" parent="MarginContainer/Root/Columns/NarrativePanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.952941, 0.92549, 0.878431, 1)
+theme_override_font_sizes/font_size = 28
+text = "Scene Title"
+
+[node name="BodyText" type="RichTextLabel" parent="MarginContainer/Root/Columns/NarrativePanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = false
+scroll_active = true
+fit_content = false
+selection_enabled = true
+context_menu_enabled = true
+
+[node name="ChoicesTitle" type="Label" parent="MarginContainer/Root/Columns/NarrativePanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.760784, 0.709804, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "Choices"
+
+[node name="Choices" type="VBoxContainer" parent="MarginContainer/Root/Columns/NarrativePanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RestartButton" type="Button" parent="MarginContainer/Root/Columns/NarrativePanel/Margin/VBox"]
+layout_mode = 2
+text = "Restart Vertical Slice"
+
+[node name="SidebarPanel" type="PanelContainer" parent="MarginContainer/Root/Columns"]
+layout_mode = 2
+custom_minimum_size = Vector2(320, 0)
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="MarginContainer/Root/Columns/SidebarPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Root/Columns/SidebarPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="StatusTitle" type="Label" parent="MarginContainer/Root/Columns/SidebarPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.760784, 0.709804, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "Party State"
+
+[node name="StatsText" type="RichTextLabel" parent="MarginContainer/Root/Columns/SidebarPanel/Margin/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 200)
+bbcode_enabled = false
+fit_content = false
+scroll_active = true
+selection_enabled = true
+
+[node name="JournalTitle" type="Label" parent="MarginContainer/Root/Columns/SidebarPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.760784, 0.709804, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "Journal"
+
+[node name="JournalText" type="RichTextLabel" parent="MarginContainer/Root/Columns/SidebarPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = false
+fit_content = false
+scroll_active = true
+selection_enabled = true
