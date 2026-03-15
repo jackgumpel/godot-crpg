@@ -53,8 +53,10 @@ Properties:
 
 - Python stdlib only
 - uploads document bytes directly to Azure
-- polls until the job completes
+- retries transient submission/polling failures and polls until the job completes
 - writes raw JSON plus normalized text outputs per file
+- can resume from saved outputs without re-submitting finished chunks when the saved request matches the current model and output format
+- can merge outputs from either auto-generated chunk ranges or separately chunked source PDFs
 
 Output layout:
 
@@ -96,9 +98,27 @@ If a large PDF needs chunking:
 ```bash
 python3 scripts/azure_docint_ocr.py \
   --model prebuilt-layout \
-  --pages "1-30" \
+  --chunk-size 30 \
+  --resume \
   "docs/Dnd-ebooks/Player's Handbook.pdf"
 ```
+
+If you already split one book into several smaller PDFs, OCR them in order and
+write one merged text artifact:
+
+```bash
+python3 scripts/azure_docint_ocr.py \
+  --model prebuilt-layout \
+  --resume \
+  --merge-inputs \
+  --merge-name xanathar_full \
+  docs/Dnd-ebooks/xanathar-part-01.pdf \
+  docs/Dnd-ebooks/xanathar-part-02.pdf \
+  docs/Dnd-ebooks/xanathar-part-03.pdf
+```
+
+The same `--resume --merge-inputs` pattern also works later without Azure
+credentials if the per-input OCR outputs are already saved locally.
 
 ## Suggested hybrid strategy
 
