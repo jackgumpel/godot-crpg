@@ -38,7 +38,11 @@
       "id": "volos_guide_to_monsters",
       "title": "Volo's Guide to Monsters",
       "source_pdf": "docs/Dnd-ebooks/Volo's Guide to Monsters.pdf",
-      "ocr_status": "pending_ocr"
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/volos_guide_to_monsters__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/volos_guide_to_monsters__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/volos_guide_to_monsters__merged/manifest.json",
+      "notes": "Completed successfully with chunk-size 5."
     },
     {
       "id": "non_combat_encounters_200",
