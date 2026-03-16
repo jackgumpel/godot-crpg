@@ -21,5 +21,14 @@
   "usage": {
     "v0.1": "Reference for terminology and intent.",
     "v0.2": "Use for live execution and future protocol patches."
-  }
+  },
+  "supplemental_protocols": [
+    {
+      "protocol": "CRPG-DATASET-PROTOCOL",
+      "version": "0.1",
+      "status": "draft_locked",
+      "file": "docs/protocol/CRPG-DATASET-PROTOCOL-v0.1.json",
+      "condensed_summary": "Project content dataset contract built on JSON Schema plus project-local provenance and normalization rules."
+    }
+  ]
 }

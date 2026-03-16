@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "skills_registry",
+  "skills": [
+    {
+      "id": "lore",
+      "label": "Lore",
+      "description": "Interpret history, symbols, scholarship, and encoded knowledge.",
+      "kind": "knowledge"
+    },
+    {
+      "id": "resolve",
+      "label": "Resolve",
+      "description": "Push through fear, pain, and stubborn resistance under pressure.",
+      "kind": "will"
+    }
+  ]
+}

@@ -1,13 +1,12 @@
 extends Control
 
 const EncounterData = preload("res://scripts/content/encounter_data.gd")
-const SKILL_LABELS := {
-	"lore": "Lore",
-	"resolve": "Resolve",
-}
+const ContentLoader = preload("res://scripts/content/content_loader.gd")
 
 var encounters: Dictionary = {}
+var entry_encounter_id := ""
 var current_encounter_id := "roadside_cairn"
+var skill_labels: Dictionary = {}
 
 @onready var scene_title: Label = $MarginContainer/Root/Columns/NarrativePanel/Margin/VBox/SceneTitle
 @onready var body_text: RichTextLabel = $MarginContainer/Root/Columns/NarrativePanel/Margin/VBox/BodyText
@@ -18,14 +17,17 @@ var current_encounter_id := "roadside_cairn"
 
 
 func _ready() -> void:
-	encounters = EncounterData.build()
+	var encounter_graph: Dictionary = EncounterData.build()
+	encounters = encounter_graph.get("nodes", {})
+	entry_encounter_id = String(encounter_graph.get("entry_node_id", "roadside_cairn"))
+	skill_labels = ContentLoader.load_skill_labels()
 	restart_button.pressed.connect(_restart_vertical_slice)
 	_restart_vertical_slice()
 
 
 func _restart_vertical_slice() -> void:
 	GameState.reset_run()
-	current_encounter_id = "roadside_cairn"
+	current_encounter_id = entry_encounter_id
 	_render_current_encounter()
 
 
@@ -72,19 +74,27 @@ func _on_choice_pressed(choice_data: Dictionary) -> void:
 		var difficulty := int(check.get("difficulty", 0))
 		var skill_value := int(GameState.skills.get(skill_name, 0))
 		if skill_value >= difficulty:
-			result = choice_data.get("on_success", {})
+			result = check.get("on_success", {})
 		else:
-			result = choice_data.get("on_failure", {})
+			result = check.get("on_failure", {})
 
 	_apply_result(result)
 
 
 func _apply_result(result: Dictionary) -> void:
-	var flag_updates: Dictionary = result.get("flags", {})
+	var flag_updates: Dictionary = result.get("set_flags", {})
 	if not flag_updates.is_empty():
 		GameState.set_flags(flag_updates)
 
-	var journal_entry := String(result.get("journal", ""))
+	var counter_updates: Dictionary = result.get("add_counters", {})
+	if not counter_updates.is_empty():
+		GameState.add_counters(counter_updates)
+
+	var quest_state_updates: Dictionary = result.get("set_quest_states", {})
+	if not quest_state_updates.is_empty():
+		GameState.set_quest_states(quest_state_updates)
+
+	var journal_entry := String(result.get("journal_add", ""))
 	if not journal_entry.is_empty():
 		GameState.add_journal_entry(journal_entry)
 
@@ -102,8 +112,10 @@ func _refresh_sidebar() -> void:
 
 func _build_stats_text() -> String:
 	var lines: Array[String] = ["Skills"]
-	for skill_id in SKILL_LABELS.keys():
-		lines.append("%s: %d" % [SKILL_LABELS[skill_id], int(GameState.skills.get(skill_id, 0))])
+	var skill_ids: Array = GameState.skills.keys()
+	skill_ids.sort()
+	for skill_id in skill_ids:
+		lines.append("%s: %d" % [String(skill_labels.get(skill_id, String(skill_id).capitalize())), int(GameState.skills.get(skill_id, 0))])
 
 	lines.append("")
 	lines.append("Flags")
@@ -116,6 +128,26 @@ func _build_stats_text() -> String:
 		for flag_key in flag_keys:
 			if bool(GameState.flags[flag_key]):
 				lines.append("- %s" % String(flag_key).replace("_", " "))
+
+	lines.append("")
+	lines.append("Counters")
+	var counter_keys: Array = GameState.counters.keys()
+	counter_keys.sort()
+	if counter_keys.is_empty():
+		lines.append("None yet.")
+	else:
+		for counter_key in counter_keys:
+			lines.append("%s: %d" % [String(counter_key).replace("_", " "), int(GameState.counters[counter_key])])
+
+	lines.append("")
+	lines.append("Quest States")
+	var quest_state_keys: Array = GameState.quest_states.keys()
+	quest_state_keys.sort()
+	if quest_state_keys.is_empty():
+		lines.append("None yet.")
+	else:
+		for quest_state_key in quest_state_keys:
+			lines.append("%s: %s" % [String(quest_state_key).replace("_", " "), String(GameState.quest_states[quest_state_key])])
 
 	return "\n".join(lines)
 
@@ -138,6 +170,6 @@ func _format_choice_text(choice_data: Dictionary) -> String:
 
 	var skill_name := String(check.get("skill", ""))
 	var difficulty := int(check.get("difficulty", 0))
-	var skill_label := String(SKILL_LABELS.get(skill_name, skill_name.capitalize()))
+	var skill_label := String(skill_labels.get(skill_name, skill_name.capitalize()))
 	var skill_value := int(GameState.skills.get(skill_name, 0))
 	return "%s [%s %d/%d]" % [base_text, skill_label, skill_value, difficulty]

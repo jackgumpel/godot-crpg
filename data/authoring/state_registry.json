@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "state_registry",
+  "flags": [
+    {
+      "id": "rune_phrase_known",
+      "default": false,
+      "description": "The player has decoded the courier passphrase from the cairn runes."
+    },
+    {
+      "id": "vault_forced",
+      "default": false,
+      "description": "The player opened the cache by brute force rather than by phrase."
+    },
+    {
+      "id": "vault_opened",
+      "default": false,
+      "description": "The courier cache is open."
+    },
+    {
+      "id": "cairn_marked",
+      "default": false,
+      "description": "The player marked the cairn for a later return."
+    }
+  ],
+  "counters": [
+    {
+      "id": "cairn_force_attempts",
+      "default": 0,
+      "min": 0,
+      "description": "Number of brute-force attempts made against the cairn latch."
+    }
+  ],
+  "quest_states": [
+    {
+      "id": "archivist_thread",
+      "allowed_values": [
+        "not_started",
+        "lead_found",
+        "active"
+      ],
+      "default": "not_started",
+      "description": "Tracks whether the Daggerford archivist thread is only discovered or fully activated."
+    }
+  ]
+}

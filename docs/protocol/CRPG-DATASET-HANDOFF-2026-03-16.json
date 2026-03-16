@@ -1,0 +1,84 @@
+{
+  "handoff": "crpg_dataset_backbone",
+  "date": "2026-03-16",
+  "status": "ready_for_secondary_agent",
+  "summary": "The dataset/protocol backbone is complete enough for the other Codex terminal to continue OCR ingestion against a stable authoring/runtime contract.",
+  "completed": [
+    {
+      "item": "dataset_protocol",
+      "file": "docs/protocol/CRPG-DATASET-PROTOCOL-v0.1.json",
+      "notes": "Defines authoring/runtime split, provenance rules, normalization rules, and the rule that secondary agents may update authoring data but must not write runtime JSON directly."
+    },
+    {
+      "item": "schema_set",
+      "files": [
+        "schemas/skills.schema.json",
+        "schemas/state_registry.schema.json",
+        "schemas/source_documents.schema.json",
+        "schemas/encounter.schema.json"
+      ],
+      "notes": "Formal contract for the current P0 dataset layers."
+    },
+    {
+      "item": "authoring_datasets",
+      "files": [
+        "data/authoring/skills.json",
+        "data/authoring/state_registry.json",
+        "data/authoring/source_documents.json",
+        "data/authoring/encounters/roadside_cairn.json"
+      ],
+      "notes": "Includes the current OCR-complete Xanathar entry and 9 pending OCR PDFs."
+    },
+    {
+      "item": "validator_normalizer",
+      "file": "scripts/validate_content.py",
+      "notes": "Validates authoring JSON, cross-references, skills, state ids, and writes runtime-safe JSON into data/runtime/."
+    },
+    {
+      "item": "ocr_queue_helper",
+      "file": "scripts/list_pending_ocr.py",
+      "notes": "Prints the remaining pending OCR jobs and recommended Azure commands."
+    },
+    {
+      "item": "godot_runtime_switch",
+      "files": [
+        "scripts/content/content_loader.gd",
+        "scripts/content/encounter_data.gd",
+        "scripts/game_state.gd",
+        "scripts/main.gd"
+      ],
+      "notes": "The vertical slice now loads normalized JSON rather than hardcoded encounter dictionaries."
+    }
+  ],
+  "not_completed_here": [
+    {
+      "item": "remaining_pdf_ocr",
+      "status": "not_run_in_this_terminal",
+      "notes": "I did not run the rest of the Azure OCR jobs here. The other Codex terminal already has the operational OCR system for that."
+    },
+    {
+      "item": "authoring_extraction_from_new_ocr",
+      "status": "pending",
+      "notes": "After each PDF is OCR-complete, the secondary agent should update source_documents and then begin authoring structured content with source_refs."
+    }
+  ],
+  "required_workflow_for_other_terminal": [
+    "Run scripts/list_pending_ocr.py to enumerate pending PDFs.",
+    "Process PDFs with the existing Azure OCR pipeline.",
+    "Update data/authoring/source_documents.json entries from pending_ocr to ocr_complete and fill the OCR artifact paths.",
+    "Run python3 scripts/validate_content.py after source_documents changes.",
+    "Do not write or hand-edit data/runtime files directly; always regenerate them through validate_content.py."
+  ],
+  "recommended_next_dataset_targets": [
+    "source_ref-backed encounter seeds",
+    "quest definitions",
+    "location registry",
+    "npc registry"
+  ],
+  "validation_last_run": [
+    "python3 scripts/validate_content.py",
+    "python3 scripts/validate_content.py --check-only",
+    "python3 scripts/list_pending_ocr.py",
+    "python3 -m py_compile scripts/validate_content.py scripts/list_pending_ocr.py"
+  ]
+}

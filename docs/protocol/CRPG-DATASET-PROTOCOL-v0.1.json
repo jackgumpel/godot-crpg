@@ -1,0 +1,103 @@
+{
+  "protocol": "CRPG-DATASET-PROTOCOL",
+  "version": "0.1",
+  "status": "draft_locked",
+  "role": "project_content_dataset_contract",
+  "judgment": "There is no single official tabletop or CRPG gameplay dataset standard worth adopting wholesale. Use JSON Schema Draft 2020-12 as the formal structure standard, then define a project-specific contract around the current Godot runtime and OCR provenance needs.",
+  "standards_basis": {
+    "authoring_schema_standard": "JSON Schema Draft 2020-12",
+    "package_manifest_inspiration": "Frictionless Data Package conventions for dataset-style metadata and resource manifests"
+  },
+  "layers": [
+    {
+      "name": "authoring",
+      "purpose": "Human-authored and OCR-derived source records with provenance and validation-friendly structure",
+      "root": "data/authoring"
+    },
+    {
+      "name": "runtime",
+      "purpose": "Normalized engine-facing JSON generated from authoring data",
+      "root": "data/runtime"
+    }
+  ],
+  "global_rules": [
+    "Every dataset file must include schema_version and dataset_type.",
+    "All ids and field names must use snake_case.",
+    "All cross-references must use string ids, never duplicated inline entities.",
+    "OCR-derived content must never go directly into runtime files without validation and normalization.",
+    "Source provenance belongs in authoring data even if the engine ignores it.",
+    "Authoring schemas are strict; runtime shapes are boring, flat, and engine-friendly.",
+    "Boolean flags, numeric counters, and enum-like quest states must stay separate.",
+    "One encounter file should represent one encounter cluster or quest slice, not a whole book."
+  ],
+  "dataset_types": [
+    {
+      "dataset_type": "skills_registry",
+      "status": "p0",
+      "purpose": "Canonical skill ids, labels, descriptions, and coarse categories"
+    },
+    {
+      "dataset_type": "state_registry",
+      "status": "p0",
+      "purpose": "Canonical state ids for flags, counters, and quest states"
+    },
+    {
+      "dataset_type": "source_documents",
+      "status": "p0",
+      "purpose": "Track PDFs, OCR outputs, and provenance for the ingest pipeline"
+    },
+    {
+      "dataset_type": "encounter_set",
+      "status": "p0",
+      "purpose": "Narrative encounter graph data that maps directly to the current Godot vertical slice"
+    }
+  ],
+  "encounter_contract": {
+    "required_root_fields": [
+      "schema_version",
+      "dataset_type",
+      "encounter_set_id",
+      "entry_node_id",
+      "nodes"
+    ],
+    "required_node_fields": [
+      "id",
+      "title",
+      "body",
+      "choices"
+    ],
+    "required_choice_fields": [
+      "id",
+      "text"
+    ],
+    "choice_rule": "Each choice must define exactly one of result or check.",
+    "required_check_fields": [
+      "skill",
+      "difficulty",
+      "on_success",
+      "on_failure"
+    ],
+    "required_result_fields": [
+      "next"
+    ]
+  },
+  "provenance_rules": [
+    "Use source_documents as the canonical registry of PDFs and OCR outputs.",
+    "Use source_refs on authoring records when a gameplay record is grounded in a document extract.",
+    "Every source_ref must include document_id, page_start, and page_end."
+  ],
+  "normalization_rules": [
+    "Normalize arrays of records into dictionaries keyed by id for runtime use.",
+    "Preserve entry_node_id explicitly rather than assuming array order.",
+    "Convert registry arrays into *_by_id dictionaries in runtime output.",
+    "Keep runtime files generated and checked in so Godot can load them without an external build step."
+  ],
+  "secondary_agent_contract": {
+    "scope": "OCR and extraction workers may populate authoring datasets and update source_documents statuses, but they must not write runtime files directly.",
+    "required_outputs": [
+      "updated source_documents entries",
+      "new authoring records with source_refs where applicable",
+      "validator-clean authoring JSON"
+    ]
+  }
+}

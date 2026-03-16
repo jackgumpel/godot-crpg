@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "source_documents_runtime",
+  "documents_by_id": {
+    "xanathars_guide_to_everything": {
+      "id": "xanathars_guide_to_everything",
+      "title": "Xanathar's Guide to Everything",
+      "source_pdf": "docs/Dnd-ebooks/628552380-Xanathar-s-Guide-to-Everything.pdf",
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/628552380_xanathar_s_guide_to_everything__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/628552380_xanathar_s_guide_to_everything__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/628552380_xanathar_s_guide_to_everything__merged/manifest.json",
+      "notes": "Primary OCR smoke-test and first full-book paid-tier success case."
+    },
+    "dungeon_masters_guide": {
+      "id": "dungeon_masters_guide",
+      "title": "Dungeon Master's Guide",
+      "source_pdf": "docs/Dnd-ebooks/Dungeon Master's Guide.pdf",
+      "ocr_status": "pending_ocr"
+    },
+    "stranger_things_starter_set": {
+      "id": "stranger_things_starter_set",
+      "title": "Stranger Things Dungeons and Dragons Roleplaying Game Starter Set",
+      "source_pdf": "docs/Dnd-ebooks/E3702_en-us_stranger-things-dungeons-and-dragons-roleplaying-game-starter-set.pdf",
+      "ocr_status": "pending_ocr"
+    },
+    "players_handbook": {
+      "id": "players_handbook",
+      "title": "Player's Handbook",
+      "source_pdf": "docs/Dnd-ebooks/Player's Handbook.pdf",
+      "ocr_status": "pending_ocr"
+    },
+    "volos_guide_to_monsters": {
+      "id": "volos_guide_to_monsters",
+      "title": "Volo's Guide to Monsters",
+      "source_pdf": "docs/Dnd-ebooks/Volo's Guide to Monsters.pdf",
+      "ocr_status": "pending_ocr"
+    },
+    "non_combat_encounters_200": {
+      "id": "non_combat_encounters_200",
+      "title": "200 Non-Combat Encounters",
+      "source_pdf": "docs/Dnd-ebooks/ilide.info-200-non-combat-encounters-pr_12a80a812da3472a553493dd29fc2994.pdf",
+      "ocr_status": "pending_ocr"
+    },
+    "dragons_of_stormwreck_isle_rulebook": {
+      "id": "dragons_of_stormwreck_isle_rulebook",
+      "title": "Dragons of Stormwreck Isle Rulebook",
+      "source_pdf": "docs/Dnd-ebooks/ilide.info-d-d-starter-set-dragons-of-stormwreck-isle-rulebook-pr_1009aa10aa1536227e9d7bec29f01d02.pdf",
+      "ocr_status": "pending_ocr"
+    },
+    "comprehensive_equipment_manual": {
+      "id": "comprehensive_equipment_manual",
+      "title": "Comprehensive Equipment Manual",
+      "source_pdf": "docs/Dnd-ebooks/ilide.info-dampampd-5e-comprehensive-equipment-manual-pr_a82488befdf8276bcb253ec50cc97e0a.pdf",
+      "ocr_status": "pending_ocr"
+    },
+    "monster_manual_expanded_bestiary": {
+      "id": "monster_manual_expanded_bestiary",
+      "title": "Monster Manual Expanded Bestiary",
+      "source_pdf": "docs/Dnd-ebooks/ilide.info-monster-manual-expanded-bestiary-pr_e3c70b3e844e7c21b69b9247facafefa.pdf",
+      "ocr_status": "pending_ocr"
+    },
+    "players_companion": {
+      "id": "players_companion",
+      "title": "Player's Companion",
+      "source_pdf": "docs/Dnd-ebooks/ilide.info-playeramp39s-companion-pr_1c2e231882e203884563989f3a670fae.pdf",
+      "ocr_status": "pending_ocr"
+    }
+  }
+}
