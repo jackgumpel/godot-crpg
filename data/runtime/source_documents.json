@@ -16,7 +16,11 @@
       "id": "dungeon_masters_guide",
       "title": "Dungeon Master's Guide",
       "source_pdf": "docs/Dnd-ebooks/Dungeon Master's Guide.pdf",
-      "ocr_status": "pending_ocr"
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/dungeon_masters_guide__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/dungeon_masters_guide__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/dungeon_masters_guide__merged/manifest.json",
+      "notes": "Completed successfully with chunk-size 5."
     },
     "stranger_things_starter_set": {
       "id": "stranger_things_starter_set",
