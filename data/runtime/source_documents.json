@@ -76,7 +76,11 @@
       "id": "comprehensive_equipment_manual",
       "title": "Comprehensive Equipment Manual",
       "source_pdf": "docs/Dnd-ebooks/ilide.info-dampampd-5e-comprehensive-equipment-manual-pr_a82488befdf8276bcb253ec50cc97e0a.pdf",
-      "ocr_status": "pending_ocr"
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/ilide_info_dampampd_5e_comprehensive_equipment_manual_pr_a82488befdf8276bcb253ec50cc97e0a__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/ilide_info_dampampd_5e_comprehensive_equipment_manual_pr_a82488befdf8276bcb253ec50cc97e0a__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/ilide_info_dampampd_5e_comprehensive_equipment_manual_pr_a82488befdf8276bcb253ec50cc97e0a__merged/manifest.json",
+      "notes": "Completed successfully with chunk-size 5."
     },
     "monster_manual_expanded_bestiary": {
       "id": "monster_manual_expanded_bestiary",
