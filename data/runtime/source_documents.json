@@ -22,7 +22,11 @@
       "id": "stranger_things_starter_set",
       "title": "Stranger Things Dungeons and Dragons Roleplaying Game Starter Set",
       "source_pdf": "docs/Dnd-ebooks/E3702_en-us_stranger-things-dungeons-and-dragons-roleplaying-game-starter-set.pdf",
-      "ocr_status": "pending_ocr"
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/e3702_en_us_stranger_things_dungeons_and_dragons_roleplaying_game_starter_set__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/e3702_en_us_stranger_things_dungeons_and_dragons_roleplaying_game_starter_set__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/e3702_en_us_stranger_things_dungeons_and_dragons_roleplaying_game_starter_set__merged/manifest.json",
+      "notes": "Completed successfully with chunk-size 5."
     },
     "players_handbook": {
       "id": "players_handbook",
@@ -40,13 +44,21 @@
       "id": "non_combat_encounters_200",
       "title": "200 Non-Combat Encounters",
       "source_pdf": "docs/Dnd-ebooks/ilide.info-200-non-combat-encounters-pr_12a80a812da3472a553493dd29fc2994.pdf",
-      "ocr_status": "pending_ocr"
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/ilide_info_200_non_combat_encounters_pr_12a80a812da3472a553493dd29fc2994__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/ilide_info_200_non_combat_encounters_pr_12a80a812da3472a553493dd29fc2994__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/ilide_info_200_non_combat_encounters_pr_12a80a812da3472a553493dd29fc2994__merged/manifest.json",
+      "notes": "Completed successfully with chunk-size 5 after 25-page chunk uploads timed out for this PDF."
     },
     "dragons_of_stormwreck_isle_rulebook": {
       "id": "dragons_of_stormwreck_isle_rulebook",
       "title": "Dragons of Stormwreck Isle Rulebook",
       "source_pdf": "docs/Dnd-ebooks/ilide.info-d-d-starter-set-dragons-of-stormwreck-isle-rulebook-pr_1009aa10aa1536227e9d7bec29f01d02.pdf",
-      "ocr_status": "pending_ocr"
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/ilide_info_d_d_starter_set_dragons_of_stormwreck_isle_rulebook_pr_1009aa10aa1536227e9d7bec29f01d02__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/ilide_info_d_d_starter_set_dragons_of_stormwreck_isle_rulebook_pr_1009aa10aa1536227e9d7bec29f01d02__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/ilide_info_d_d_starter_set_dragons_of_stormwreck_isle_rulebook_pr_1009aa10aa1536227e9d7bec29f01d02__merged/manifest.json",
+      "notes": "Completed successfully with chunk-size 5."
     },
     "comprehensive_equipment_manual": {
       "id": "comprehensive_equipment_manual",
@@ -58,7 +70,11 @@
       "id": "monster_manual_expanded_bestiary",
       "title": "Monster Manual Expanded Bestiary",
       "source_pdf": "docs/Dnd-ebooks/ilide.info-monster-manual-expanded-bestiary-pr_e3c70b3e844e7c21b69b9247facafefa.pdf",
-      "ocr_status": "pending_ocr"
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/ilide_info_monster_manual_expanded_bestiary_pr_e3c70b3e844e7c21b69b9247facafefa__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/ilide_info_monster_manual_expanded_bestiary_pr_e3c70b3e844e7c21b69b9247facafefa__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/ilide_info_monster_manual_expanded_bestiary_pr_e3c70b3e844e7c21b69b9247facafefa__merged/manifest.json",
+      "notes": "Completed successfully with chunk-size 5."
     },
     "players_companion": {
       "id": "players_companion",

@@ -22,7 +22,7 @@ def main() -> int:
 				"title": str(document["title"]),
 				"source_pdf": source_pdf,
 				"recommended_command": (
-					f"python3 scripts/azure_docint_ocr.py --model prebuilt-layout --chunk-size 25 --resume \"{source_pdf}\""
+					f"python3 scripts/azure_docint_ocr.py --model prebuilt-layout --chunk-size 5 --resume \"{source_pdf}\""
 				),
 			}
 		)
