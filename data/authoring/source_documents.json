@@ -80,7 +80,11 @@
       "id": "players_companion",
       "title": "Player's Companion",
       "source_pdf": "docs/Dnd-ebooks/ilide.info-playeramp39s-companion-pr_1c2e231882e203884563989f3a670fae.pdf",
-      "ocr_status": "pending_ocr"
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/ilide_info_playeramp39s_companion_pr_1c2e231882e203884563989f3a670fae__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/ilide_info_playeramp39s_companion_pr_1c2e231882e203884563989f3a670fae__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/ilide_info_playeramp39s_companion_pr_1c2e231882e203884563989f3a670fae__merged/manifest.json",
+      "notes": "Completed successfully with chunk-size 5."
     }
   ]
 }
