@@ -36,7 +36,11 @@
       "id": "players_handbook",
       "title": "Player's Handbook",
       "source_pdf": "docs/Dnd-ebooks/Player's Handbook.pdf",
-      "ocr_status": "pending_ocr"
+      "ocr_status": "ocr_complete",
+      "ocr_content_path": "tmp/pdfs/azure_ocr/players_handbook__merged/content.md",
+      "ocr_plain_text_path": "tmp/pdfs/azure_ocr/players_handbook__merged/plain_text.txt",
+      "ocr_manifest_path": "tmp/pdfs/azure_ocr/players_handbook__merged/manifest.json",
+      "notes": "Completed successfully with chunk-size 5."
     },
     "volos_guide_to_monsters": {
       "id": "volos_guide_to_monsters",
